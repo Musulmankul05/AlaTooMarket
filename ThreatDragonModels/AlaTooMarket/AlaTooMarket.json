@@ -35,8 +35,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "76d0c45e-4236-4ea3-81f7-37708b346b67",
             "zIndex": -1,
+            "id": "76d0c45e-4236-4ea3-81f7-37708b346b67",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "КОМПАНИЯ",
@@ -70,8 +70,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "65fe3602-65f5-45ab-8b04-08787863aab0",
             "zIndex": -1,
+            "id": "65fe3602-65f5-45ab-8b04-08787863aab0",
             "data": {
               "type": "tm.BoundaryBox",
               "name": " ДОСТАВКА ЧЕРЕЗ QUICKPOST ",
@@ -102,8 +102,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "fd415046-f134-4083-abf6-964b7e5007b6",
             "zIndex": -1,
+            "id": "fd415046-f134-4083-abf6-964b7e5007b6",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "SaaS",
@@ -250,8 +250,8 @@
                 "text": "SYS-03 — nginx"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -348,19 +348,42 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "4fc3fd3b-c432-4080-b02b-d7469e7ba4cf",
+                  "title": "DDoS-атака на интернет-магазин.",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Злоумышленник перегружает балансировщик запросами, из-за чего покупатели не могут оформить заказы во время распродажи",
+                  "mitigation": "Использовать защиту от DDoS, ограничение запросов и мониторинг",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -376,23 +399,42 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Login",
+              "name": "Login, корзина + цена",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "bbc40d97-edd4-4fa9-b1f7-943aebd725e4",
+                  "title": "Подмена цены товара.",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Покупатель изменяет цену товара в запросе браузера. Сайт принимает переданную цену вместо проверки актуальной цены на сервере",
+                  "mitigation": "Рассчитывать цену исключительно на сервере",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [
                 "76d0c45e-4236-4ea3-81f7-37708b346b67"
-              ]
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
-              "Login"
+              "Login, корзина + цена"
             ],
             "id": "cffb18e5-b26e-4011-8f44-4774b11c4d04",
             "source": {
@@ -1161,6 +1203,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 13,
             "ports": {
               "groups": {
                 "top": {
@@ -1244,7 +1287,6 @@
               ]
             },
             "id": "e1244fce-9485-4a38-bd22-4f62af348d74",
-            "zIndex": 13,
             "data": {
               "type": "tm.Actor",
               "name": "Курьер",
@@ -1278,6 +1320,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 14,
             "ports": {
               "groups": {
                 "top": {
@@ -1361,7 +1404,6 @@
               ]
             },
             "id": "8ca9678e-d658-4b8c-9fab-f3d12a029e86",
-            "zIndex": 14,
             "data": {
               "type": "tm.Actor",
               "name": "Платёжный шлюз.",
@@ -1395,6 +1437,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 15,
             "ports": {
               "groups": {
                 "top": {
@@ -1478,7 +1521,6 @@
               ]
             },
             "id": "a6c4ef52-89fa-4fa7-8a54-5c75abc19792",
-            "zIndex": 15,
             "data": {
               "type": "tm.Actor",
               "name": "Склад",
@@ -1512,6 +1554,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 17,
             "ports": {
               "groups": {
                 "top": {
@@ -1595,7 +1638,6 @@
               ]
             },
             "id": "86ed2b62-47af-447a-a87d-d90b451ada79",
-            "zIndex": 17,
             "data": {
               "type": "tm.Process",
               "name": "SYS-12 приложение курьера.",
@@ -1625,16 +1667,19 @@
                 "text": "Excel для QuickPost"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 20,
             "ports": {
               "groups": {
                 "top": {
@@ -1718,7 +1763,6 @@
               ]
             },
             "id": "e0cc5216-b129-4afc-947e-3bb74b329af5",
-            "zIndex": 20,
             "data": {
               "type": "tm.Store",
               "name": "Excel для QuickPost",
@@ -1726,13 +1770,33 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "c5dbb8eb-671b-4748-ab24-8d14ef0629f7",
+                  "title": "Утечка базы клиентов через Excel",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "Злоумышленник получает файл с ФИО, телефонами и адресами клиентов, отправленный курьерскому подрядчику",
+                  "mitigation": "Передавать только заказы текущего дня, ограничить доступ и защищать файлы",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             }
           },
           {
@@ -1756,6 +1820,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 22,
             "ports": {
               "groups": {
                 "top": {
@@ -1839,7 +1904,6 @@
               ]
             },
             "id": "3d33d1e2-0056-4ea0-8dc1-75385e64f4ae",
-            "zIndex": 22,
             "data": {
               "type": "tm.Process",
               "name": "SYS-01",
@@ -1869,13 +1933,14 @@
                 "text": "SYS-04 — CRM"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 23,
             "ports": {
               "groups": {
                 "top": {
@@ -1959,7 +2024,6 @@
               ]
             },
             "id": "f5e6c3e6-ee6c-407f-9123-72700d4c7487",
-            "zIndex": 23,
             "data": {
               "type": "tm.Process",
               "name": "SYS-04 — CRM",
@@ -1967,12 +2031,47 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "c7e7e921-f262-4192-909d-9a620a1ccd7e",
+                  "title": "Мошенник выдаёт себя за покупателя",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Злоумышленник звонит в колл-центр, представляется клиентом и просит изменить адрес доставки. Сотрудник выполняет просьбу без проверки личности",
+                  "mitigation": "Подтверждать личность клиента одноразовым кодом",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": ""
+                },
+                {
+                  "id": "0b7c9945-675e-4b5f-b138-acbced297861",
+                  "title": "Отрицание действий сотрудника",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Repudiation",
+                  "description": "Сотрудник изменяет заказ или скидку, а компания не может установить автора действия, поскольку журнал действий отсутствует",
+                  "mitigation": "Включить аудит действий и индивидуальные учётные записи",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -1989,13 +2088,14 @@
                 "text": "SYS-04"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 24,
             "ports": {
               "groups": {
                 "top": {
@@ -2079,7 +2179,6 @@
               ]
             },
             "id": "b72b2b31-2f33-4f10-b8c5-dfa560c4f9b0",
-            "zIndex": 24,
             "data": {
               "type": "tm.Process",
               "name": "SYS-04",
@@ -2087,12 +2186,34 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "95b0f175-b7b4-4cbc-a54c-d45c2f71f11b",
+                  "title": "Получение избыточных прав сотрудником склада",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Из-за общего логина смены невозможно разделить действия сотрудников, а избыточные права могут позволить изменять чужие заказы и складские данные",
+                  "mitigation": "выдать каждому сотруднику персональную учётную запись и ограничить права по ролям.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -2116,6 +2237,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 25,
             "ports": {
               "groups": {
                 "top": {
@@ -2199,7 +2321,6 @@
               ]
             },
             "id": "c098ff9d-f2c3-4703-9b4c-96f18a72a04b",
-            "zIndex": 25,
             "data": {
               "type": "tm.Process",
               "name": "SYS-11 (почта)",
@@ -2236,6 +2357,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 26,
             "ports": {
               "groups": {
                 "top": {
@@ -2319,7 +2441,6 @@
               ]
             },
             "id": "f39237d9-9b4c-4206-a193-5f105a0ae457",
-            "zIndex": 26,
             "data": {
               "type": "tm.Process",
               "name": "SYS-04",
@@ -2356,6 +2477,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 27,
             "ports": {
               "groups": {
                 "top": {
@@ -2439,7 +2561,6 @@
               ]
             },
             "id": "a475b884-ae7c-4fef-a473-19a164212b62",
-            "zIndex": 27,
             "data": {
               "type": "tm.Actor",
               "name": "Покупатель",
@@ -2457,6 +2578,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 0
+    "threatTop": 8
   }
 }
